@@ -20,10 +20,10 @@ const eventReducer = (previousValue: IPipeEvent, currentValue: IPipeEvent) => {
 };
 
 const events: IPipeEvent[] = [
-	{ action: EventTypes.Create, payload: { title: 'testing create', owner: 'martin' } },
-	{ action: EventTypes.Update, payload: { owner: 'normark' } },
-	{ action: EventTypes.Update, payload: { price: 15000 } },
-	{ action: EventTypes.Update, payload: { price: undefined } },
+	{ action: EventTypes.Create, payload: { title: 'Events NFT', owner: 'martin' } },
+	{ action: EventTypes.Update, payload: { price: 1.5 } },
+	{ action: EventTypes.Update, payload: { currency: 'eth' } },
+	{ action: EventTypes.Update, payload: { comment: 'eth is money!' } },
 ];
 
 const materializeObject = (events: IPipeEvent[]) => {
