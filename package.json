@@ -1,0 +1,21 @@
+{
+  "name": "@pipeops/materializer",
+  "version": "0.1.0",
+  "description": "Materialize objects from stream of events",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "start": "npm run build && node .\\dist\\index.js"
+  },
+  "keywords": [
+    "event-sourcing",
+    "poco",
+    "typescript"
+  ],
+  "author": "martinnormark",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  }
+}
