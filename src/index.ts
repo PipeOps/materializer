@@ -6,13 +6,11 @@ enum EventTypes {
 }
 
 interface IPipeEvent {
+	timestamp: number;
 	action: EventTypes;
+	aggregate: string;
+	aggregateId: string;
 	payload?: any;
-
-	// Should have timestamp, authorId etc as well
-	// timestamp: Date;
-	// objectId: UUID;
-	// authorId: UUID;
 }
 
 const eventReducer = (previousValue: IPipeEvent, currentValue: IPipeEvent) => {
@@ -20,10 +18,10 @@ const eventReducer = (previousValue: IPipeEvent, currentValue: IPipeEvent) => {
 };
 
 const events: IPipeEvent[] = [
-	{ action: EventTypes.Create, payload: { title: 'Events NFT', owner: 'martin' } },
-	{ action: EventTypes.Update, payload: { price: 1.5 } },
-	{ action: EventTypes.Update, payload: { currency: 'eth' } },
-	{ action: EventTypes.Update, payload: { comment: 'eth is money!' } },
+	{ action: EventTypes.Create, timestamp: 1638251255857, aggregate: 'nft-catalog', aggregateId: 'abc123', payload: { title: 'Events NFT', owner: 'martin' } },
+	{ action: EventTypes.Update, timestamp: 1638261255857, aggregate: 'nft-catalog', aggregateId: 'abc123', payload: { price: 1.5 } },
+	{ action: EventTypes.Update, timestamp: 1638271255857, aggregate: 'nft-catalog', aggregateId: 'abc123', payload: { currency: 'eth' } },
+	{ action: EventTypes.Update, timestamp: 1638281255857, aggregate: 'nft-catalog', aggregateId: 'abc123', payload: { comment: 'eth is money!' } },
 ];
 
 const materializeObject = (events: IPipeEvent[]) => {
