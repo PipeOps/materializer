@@ -1,21 +1,6 @@
-enum EventTypes {
-	Create,
-	Update,
-	Delete,
-	Clone,
-}
-
-interface IPipeEvent {
-	timestamp: number;
-	action: EventTypes;
-	aggregate: string;
-	aggregateId: string;
-	payload?: any;
-}
-
-const eventReducer = (previousValue: IPipeEvent, currentValue: IPipeEvent) => {
-	return Object.assign(previousValue?.payload || previousValue, currentValue.payload);
-};
+import EventTypes from './EventTypes';
+import IPipeEvent from './PipeEvent';
+import eventsReducer from './reducers/EventsReducer';
 
 const events: IPipeEvent[] = [
 	{ action: EventTypes.Create, timestamp: 1638251255857, aggregate: 'nft-catalog', aggregateId: 'abc123', payload: { title: 'Events NFT', owner: 'martin' } },
@@ -25,7 +10,7 @@ const events: IPipeEvent[] = [
 ];
 
 const materializeObject = (events: IPipeEvent[]) => {
-	const materialzied: any = events.reduce(eventReducer);
+	const materialzied: any = events.reduce(eventsReducer);
 	Object.keys(materialzied).forEach((key) => materialzied[key] === undefined && delete materialzied[key]);
 
 	return materialzied;
